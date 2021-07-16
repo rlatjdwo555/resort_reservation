@@ -7,7 +7,7 @@
   2-1. 결제 승인 -> 바우처 생성 (**voucherStatus=Valid**)<br>
   2-2. 결제 취소 -> **예약 취소 및 리조트 예약가능으로 각 Status 변경**
 3. 예약 취소 시<br>
-  3-1. **결제 취소 및 바우처 무효로 각 Status 변경**
+  3-1. **결제 취소 및 바우처 무효(**voucherStatus=Invalid**)로 각 Status 변경**
 
 <br>
 
