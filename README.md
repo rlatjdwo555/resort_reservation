@@ -50,7 +50,7 @@ http localhost:8081/resorts/3
 
 - 예약 취소 시, 결제/바우처 상태값 변경 확인
 ```
-http PATCH localhost:8188/reservations/2 resortStatus="Cancelled" // 예약 취소
+http PATCH localhost:8088/reservations/2 resortStatus="Cancelled" // 예약 취소
 
 // Payment의 paymentStatus=Cancelled 확인
 http localhost:8088/payments/2
