@@ -6,7 +6,7 @@
 2. 결제 List에서 결제 승인/취소 가능<br>
   2-1. 결제 승인 -> 바우처 생성 (**voucherStatus = Valid**)<br>
   2-2. 결제 취소 -> **예약=Cancelled / 리조트=Available로 각 Status 변경**
-3. 예약 취소 시 
+3. 예약 취소 시<br>
   3-1. **결제=Cancelled / 바우처=Invalid로 각 Status 변경**
 
 <br>
@@ -26,7 +26,7 @@ http localhost:8088/reservations resortId=1 memberName="sim sang joon"
 http localhost:8088/reservations resortId=2 memberName="sung jae kim"
 http localhost:8088/reservations resortId=3 memberName="kill dong hong"
 
-http localhost:8088/payments
+http localhost:8088/payments  // 결제List 확인
 ```
 
 - 결제 승인 시, 바우처 생성 확인
