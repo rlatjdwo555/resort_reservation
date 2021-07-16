@@ -3,11 +3,11 @@
 ### 시나리오 설명 
 
 1. 예약 후 결제 요청 -> 결제 List에 추가
-2. 결제 List에서 결제 승인/취소 가능
-2-1. 결제 승인 -> 바우처 생성 (**voucherStatus = Valid**)
-2-2. 결제 취소 -> **예약=Cancelled / 리조트=Available로 각 Status 변경**
+2. 결제 List에서 결제 승인/취소 가능<br>
+  2-1. 결제 승인 -> 바우처 생성 (**voucherStatus = Valid**)<br>
+  2-2. 결제 취소 -> **예약=Cancelled / 리조트=Available로 각 Status 변경**
 3. 예약 취소 시 
-3-1. **결제=Cancelled / 바우처=Invalid로 각 Status 변경**
+  3-1. **결제=Cancelled / 바우처=Invalid로 각 Status 변경**
 
 <br>
 
