@@ -5,9 +5,9 @@
 1. 예약 후 결제 요청 -> 결제 List에 추가
 2. 결제 List에서 결제 승인/취소 가능<br>
   2-1. 결제 승인 -> 바우처 생성 (**voucherStatus=Valid**)<br>
-  2-2. 결제 취소 -> **예약=Cancelled / 리조트=Available로 각 Status 변경**
+  2-2. 결제 취소 -> **예약 취소=Cancelled / 리조트 예약가능=Available로 각 Status 변경**
 3. 예약 취소 시<br>
-  3-1. **결제=Cancelled / 바우처=Invalid로 각 Status 변경**
+  3-1. **결제 취소=Cancelled / 바우처 무효=Invalid로 각 Status 변경**
 
 <br>
 
@@ -41,10 +41,10 @@ http localhost:8088/vouchers  // 바우처 확인(voucherStatus=Valid)
 ```
 http PATCH localhost:8088/payments/3 paymentStatus="Cancelled" // 결제 취소
 
-// Reservation의 resortStatus=Cancelled 확인 
+// 예약 취소: resortStatus=Cancelled 확인 
 http localhost:8082/reservations/3 
 
-// Resort의 resortStatus=Available 확인
+// 리조트 예약가능: resortStatus=Available 확인
 http localhost:8081/resorts/3
 ```
 
@@ -52,9 +52,9 @@ http localhost:8081/resorts/3
 ```
 http PATCH localhost:8088/reservations/2 resortStatus="Cancelled" // 예약 취소
 
-// Payment의 paymentStatus=Cancelled 확인
+// 결제 취소: paymentStatus=Cancelled 확인
 http localhost:8088/payments/2
 
-// Voucher의 voucherStatus=Invalid 확인
+// 바우처 무효: voucherStatus=Invalid 확인
 http localhost:8088/vouchers/2
 ```
