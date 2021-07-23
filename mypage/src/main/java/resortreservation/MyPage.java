@@ -16,9 +16,9 @@ public class MyPage {
         private String resortStatus;
         private String resortType;
         private String resortPeriod;
+        private String paymentStatus;
         private Float resortPrice;
-
-
+        
         public Long getId() {
             return id;
         }
@@ -74,6 +74,14 @@ public class MyPage {
 
         public void setResortPrice(Float resortPrice) {
             this.resortPrice = resortPrice;
+        }
+
+        public String getPaymentStatus() {
+            return paymentStatus;
+        }
+    
+        public void setPaymentStatus(String paymentStatus) {
+            this.paymentStatus = paymentStatus;
         }
 
 }

@@ -34,6 +34,7 @@ public class MyPageViewHandler {
             myPage.setResortType(reservationRegistered.getResortType());
             myPage.setResortPeriod(reservationRegistered.getResortPeriod());
             myPage.setResortPrice(reservationRegistered.getResortPrice());
+            myPage.setPaymentStatus("Requested");
             // view 레파지 토리에 save
             myPageRepository.save(myPage);
         
@@ -53,7 +54,45 @@ public class MyPageViewHandler {
                 MyPage myPage = myPageOptional.get();
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
                     myPage.setResortStatus(reservationCanceled.getResortStatus());
+                    myPage.setPaymentStatus("Cancelled");
                 // view 레파지 토리에 save
+                myPageRepository.save(myPage);
+            }
+            
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    
+    @StreamListener(KafkaProcessor.INPUT)
+    public void whenPaymentStatus_UPDATE(@Payload PaymentApproved paymentApproved) {
+        try {
+            if (!paymentApproved.validate()) return;
+                
+            Optional<MyPage> myPageOptional = myPageRepository.findById(paymentApproved.getReservId());
+
+            if( myPageOptional.isPresent()) {
+                MyPage myPage = myPageOptional.get();                
+                myPage.setPaymentStatus(paymentApproved.getPaymentStatus());
+                myPageRepository.save(myPage);
+            }
+            
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @StreamListener(KafkaProcessor.INPUT)
+    public void whenPaymentStatus_UPDATE(@Payload PaymentCancelled paymentcancelled) {
+        try {
+            if (!paymentcancelled.validate()) return;
+ 
+            Optional<MyPage> myPageOptional = myPageRepository.findById(paymentcancelled.getReservId());
+
+            if( myPageOptional.isPresent()) {
+                MyPage myPage = myPageOptional.get();
+                myPage.setPaymentStatus(paymentcancelled.getPaymentStatus());
                 myPageRepository.save(myPage);
             }
             
